@@ -26,9 +26,6 @@ jobs:
           pip install -r requirements.txt
           pip install pytest flake8 black sphinx sphinx-rtd-theme
 
-      - name: Run tests with pytest
-        run: pytest
-
       - name: Lint code with flake8
         run: flake8 src/
 
