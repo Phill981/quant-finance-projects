@@ -9,4 +9,5 @@ pytest
 flake8
 black
 mypy
-
+selenium 
+webdriver-manager
