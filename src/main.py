@@ -6,7 +6,7 @@ if __name__ == "__main__":
                           option_type="C", american_option=False)
     price = crr.run_calculation()
     print("Option Price:", price)
-    print(crr.__dict__)
+    crr.plot_tree()
 
     # Plot the tree
     crr.plot_tree()

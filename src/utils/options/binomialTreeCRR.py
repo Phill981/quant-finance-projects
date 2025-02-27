@@ -59,9 +59,7 @@ class BinomialTreeCRR:
         for step in range(self.N - 1, -1, -1):
             new_values = []
             for i in range(step + 1):
-
                 asset_price = self.S * (self.u ** i) * (self.d ** (step - i))
-
                 continuation_value = np.exp(-self.r * self.delta_t) * (
                     self.p * option_values[i + 1] +
                     (1 - self.p) * option_values[i]
@@ -72,11 +70,20 @@ class BinomialTreeCRR:
                     else:
                         immediate_exercise = max(self.K - asset_price, 0)
                     new_value = max(continuation_value, immediate_exercise)
+
+                    # Log details when using American option logic:
+                    if immediate_exercise > continuation_value:
+                        print(f"Step {step}, Node {i}: Asset Price = {asset_price:.2f} --> "
+                              f"CV = {continuation_value:.2f}, IE = {immediate_exercise:.2f} (Exercise!) "
+                              f"=> Chosen = {new_value:.2f}")
+                    else:
+                        print(f"Step {step}, Node {i}: Asset Price = {asset_price:.2f} --> "
+                              f"CV = {continuation_value:.2f}, IE = {immediate_exercise:.2f} "
+                              f"=> Chosen = {new_value:.2f}")
                 else:
                     new_value = continuation_value
                 new_values.append(new_value)
             option_values = new_values
-
         return option_values[0]
 
     def plot_tree(self) -> None:

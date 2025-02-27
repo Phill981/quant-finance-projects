@@ -6,4 +6,4 @@ services:
             - PYTHONUNBUFFERED=1
         volumes:
             - .:/app
-        command: python src/main.py
+        command: python test.py
