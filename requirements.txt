@@ -11,3 +11,4 @@ black
 mypy
 selenium 
 webdriver-manager
+websocket-client
