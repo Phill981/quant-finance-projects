@@ -35,8 +35,4 @@ def get_history(symbol: str, type: str):
     return df
 
 
-while True:
-    print(f"ASK: {get_history('TSLA', 'ask')}")
-    print(f"BID: {get_history('TSLA', 'bid')}")
-    print(f"MID: {get_history('TSLA', 'mid')}")
-    time.sleep(0.1)
+print(get_history('TSLA', 'ask'))
