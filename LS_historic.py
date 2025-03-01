@@ -27,16 +27,12 @@ def get_history(symbol: str, type: str):
     url = f'https://www.ls-tc.de/_rpc/json/instrument/chart/dataForInstrument?instrumentId={id}&marketId=1&quotetype={type}&series=history&localeId=2'
     resp = requests.get(url, headers=headers)
     assert resp.status_code == 200, resp.status_code
-
-    return resp.json()["series"]["history"]["data"][-1]
-
-
-# df = pd.DataFrame(resp.json()['series']['history']
-#                  ['data'], columns=['Date', 'Price'])
-# df.Date *= 1000000
-# df.Date = pd.to_datetime(df.Date)
-# df.set_index('Date', inplace=True)
-# return df
+    df = pd.DataFrame(resp.json()['series']['history']
+                      ['data'], columns=['Date', 'Price'])
+    df.Date *= 1000000
+    df.Date = pd.to_datetime(df.Date)
+    df.set_index('Date', inplace=True)
+    return df
 
 
 while True:

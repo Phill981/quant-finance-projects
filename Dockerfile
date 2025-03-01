@@ -10,5 +10,5 @@ RUN apt-get install -y python3-tk
 
 COPY . .
 
-CMD ["python", "test.py"]
+CMD ["python", "LS_historic.py"]
 
